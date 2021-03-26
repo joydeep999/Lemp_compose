@@ -8,6 +8,22 @@ services:
     networks:
       - lemp_net
 
+services:
+
+  wordpress:
+    image: wordpress
+    ports:
+      - 8080:8080
+    environment:
+      WORDPRESS_DB_HOST: mysql
+      WORDPRESS_DB_USER: wp_user
+      WORDPRESS_DB_PASSWORD: 123
+      WORDPRESS_DB_NAME: wp_example_db
+    volumes:
+      - wordpress:/var/www/html
+    networks:
+      - lemp_net
+
   nginx:
     image: nginx:latest
     container_name: nginx
@@ -23,10 +39,12 @@ services:
     ports:
       - 3306:3306
     environment:
-      MYSQL_DATABASE: lemp_compose_test_db
+      MYSQL_DATABASE: wp_example_db
+      MYSQL_USER: wp_user
+      MYSQL_PASSWORD: 123
       MYSQL_ROOT_PASSWORD: password123
     volumes:
-    - mysql-data:/var/lib/mysql
+      - mysql-data:/var/lib/mysql
     networks:
       - lemp_net
 
@@ -35,5 +53,6 @@ networks:
     driver: bridge
 
 volumes:
+  wordpress :
   mysql-data:
     driver: local
