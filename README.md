@@ -2,7 +2,7 @@
 
 * Contains a basic docker compose file for lemp stack.
 
-* Pulls latest images of PHP, MySql, Nginx from the docker hub and runs them as containers on executing **docker-compose -f lemp_stack.yaml up**
+* Pulls latest images of PHP, WordPress, MySql, Nginx from the docker hub and runs them as containers on executing **docker-compose -f lemp_stack.yaml up**
 
 
 # How it works
