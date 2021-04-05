@@ -58,8 +58,6 @@ services:
   php:
     image: php:7-fpm-alpine
     container_name: php-fpm
-    volumes:
-    ./work_dir:/work_dir
     ports:
      - "9000:9000"       
     networks:
